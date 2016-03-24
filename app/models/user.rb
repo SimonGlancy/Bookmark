@@ -10,10 +10,11 @@ class User
   attr_accessor :password_confirmation
 
   validates_confirmation_of :password
+  validates_presence_of :email
 
   property :id, Serial
   property :username, String, :lazy => false
-  property :email, Text, :lazy => false
+  property :email, Text, :lazy => false, :required => true, :format => :email_address
   property :password_digest, Text, :lazy => false
 
   def password=(password)

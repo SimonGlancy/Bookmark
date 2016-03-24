@@ -51,8 +51,15 @@ class Bookmark < Sinatra::Base
       session[:user_id] = @user.id
       redirect to('/home')
     else
-      flash.now[:invalid] = "Passwords do not match"
+      # !@user.password.valid
+      flash.now[:invalid_password] = "Passwords do not match"
+      # @message = :invalid_password
       erb(:new_user)
+    # elsif
+    #   !email.valid
+    #   flash.now[:invalid_email] = "Incorrect email"
+    #   @message = :invalid_email
+    #   erb(:new_user)
     end
   end
 
